@@ -4,20 +4,23 @@ import {useState} from "react";
 
 const melanie_music = new Audio(music)
 
-export const ImageMiscPlayer = () => {
+export const ImageMiscPlayer = ({setPause, setStart}) => {
     const [isPlay, setIsPlay] = useState(true);
 
     function handleMusic() {
+        setStart(true)
         setIsPlay(!isPlay)
         if (isPlay) {
             melanie_music.play()
         } else {
             melanie_music.pause()
+            setPause(true)
         }
     }
 
     function handleReset() {
         melanie_music.currentTime = 0
+        setStart(false)
     }
 
     return (
